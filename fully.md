@@ -1,46 +1,55 @@
-User: was muss ich in Fully Kiosk einstellen damit nur der Bildschirmschoner aktiviert wird ohne den Hintergrundprozess zu beenden und per kammera wieder deaktiviert wird
+# Fully Kiosk: Bildschirmschoner statt Bildschirm-Aus
 
-Assistant: Stell **nicht „Screen Off“**, sondern **den Fully-Screensaver** ein. Dann bleibt Fully im Vordergrund aktiv und die Kameraerkennung kann den Screensaver wieder beenden. Laut Fully gilt: Wenn der Bildschirm wirklich ausgeht oder das Gerät schlafen geht, werden auf manchen Geräten App, Kamera-Motion-Detection oder Remote Admin gestoppt; als Workaround empfiehlt Fully ausdrücklich **Screensaver statt Screen Off**. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+## Frage
+Was muss ich in Fully Kiosk einstellen, damit nur der Bildschirmschoner aktiviert wird, ohne den Hintergrundprozess zu beenden, und per Kamera wieder deaktiviert wird?
 
-**Empfohlene Einstellungen in Fully Kiosk:**
+## Antwort
+Stell **nicht „Screen Off“**, sondern den **Fully-Screensaver** ein. So bleibt Fully aktiv im Vordergrund und die Kameraerkennung kann den Bildschirmschoner wieder beenden.
 
-1. **Device Management / Geräteverwaltung**
-   - **Keep Screen On = EIN**
-   - **Keep Screen On (Advanced) = EIN**, falls andere Apps genutzt werden oder das Gerät trotzdem abdunkelt.  
-   Das hält Android davon ab, das Gerät schlafen zu legen. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+Laut Fully gilt: Wenn der Bildschirm wirklich ausgeschaltet wird oder das Gerät in den Sleep-Modus geht, können je nach Gerät App, Kamera-Motion-Detection oder Remote-Admin gestoppt werden. Als Workaround empfiehlt Fully ausdrücklich, den **Screensaver statt Screen Off** zu verwenden.
 
-2. **Screensaver**
-   - **Screensaver Timer** auf die gewünschte Idle-Zeit setzen
-   - **Screensaver Playlist** leer lassen, wenn du nur abdunkeln willst
-   - **Screensaver Wallpaper URL** optional auf Schwarz setzen, z. B. `fully://color#000000`
-   - **Screensaver Brightness** sehr niedrig oder `0`, wenn der Bildschirm praktisch schwarz sein soll  
-   Fully beschreibt ausdrücklich, dass du die Playlist leer lassen kannst, wenn du den Screen nur dimmen willst. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+## Empfohlene Einstellungen in Fully Kiosk
 
-3. **Motion Detection / Bewegungserkennung**
-   - **Visual Motion Detection = EIN** für Erkennung per Kamera
-   - optional **Face Detection = EIN**, wenn verfügbar
-   - **Stop Screensaver on Motion = EIN** bzw. die Bewegungserkennung so nutzen, dass der Screensaver bei Bewegung beendet wird  
-   Fully nennt als Funktion, dass bei Bewegung per Kamera der Bildschirm eingeschaltet bzw. der Screensaver gestoppt werden kann. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+### 1. Device Management / Geräteverwaltung
+- **Keep Screen On = EIN**
+- **Keep Screen On (Advanced) = EIN**, falls andere Apps genutzt werden oder das Gerät trotzdem abdunkelt
 
-4. **Wichtig: Nicht verwenden**
-   - **Screen Off Timer = AUS**
-   - keine echten Sleep-/Hibernate-Funktionen verwenden  
-   Denn Fully weist darauf hin, dass bei ausgeschaltetem Display viele Geräte Prozesse aussetzen oder die App sogar töten; besonders Kamera-Motion-Detection kann dann nicht mehr laufen. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+Das verhindert, dass Android das Gerät schlafen legt.
 
-5. **Falls Bewegungserkennung beim Start/Stop des Screensavers falsch auslöst**
-   - **Ignore Motion Detection when Screensaver goes on/off = EIN**  
-   Das ist laut Fully genau für Fehltrigger beim Ein-/Ausblenden des Screensavers gedacht. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+### 2. Screensaver
+- **Screensaver Timer** auf die gewünschte Inaktivitätszeit setzen
+- **Screensaver Playlist** leer lassen, wenn du nur abdunkeln willst
+- **Screensaver Wallpaper URL** optional auf Schwarz setzen, z. B. `fully://color#000000`
+- **Screensaver Brightness** sehr niedrig oder `0`, wenn der Bildschirm praktisch schwarz sein soll
 
-**Kurz gesagt:**  
-Wenn du willst, dass **nur ein schwarzer „Bildschirmschoner“ aktiv ist**, **Fully aber weiterläuft und per Kamera wieder aufwacht**, dann:
-- **Keep Screen On EIN**
-- **Screensaver Timer EIN**
-- **Screen Off Timer AUS**
-- **Visual Motion Detection EIN**
-- **Screensaver-Helligkeit sehr niedrig / schwarz**. ([fully-kiosk.com](https://www.fully-kiosk.com/en/?utm_source=openai))
+Fully beschreibt ausdrücklich, dass die Playlist leer bleiben kann, wenn der Bildschirm nur gedimmt werden soll.
 
-Wenn du möchtest, kann ich dir als Nächstes eine **konkrete Schritt-für-Schritt-Liste auf Deutsch mit den exakten Menüpfaden in Fully** schreiben.
+### 3. Motion Detection / Bewegungserkennung
+- **Visual Motion Detection = EIN** für Bewegungserkennung per Kamera
+- optional **Face Detection = EIN**, wenn verfügbar
+- **Stop Screensaver on Motion = EIN** bzw. die Bewegungserkennung so konfigurieren, dass der Screensaver bei Bewegung beendet wird
 
-User: {"url":"https://github.com/Borstel67/switche/blob/main/netboxprint.Md"}
+So kann der Bildschirmschoner durch erkannte Bewegung über die Kamera wieder deaktiviert werden.
 
-User: Speichere den gesamten chat in borstel67/switche unter fully.md
+### 4. Wichtig: Nicht verwenden
+- **Screen Off Timer = AUS**
+- keine echten Sleep-/Hibernate-Funktionen verwenden
+
+Denn bei ausgeschaltetem Display setzen viele Geräte Prozesse aus oder beenden die App ganz. Besonders die Kamera-Motion-Detection kann dann nicht mehr zuverlässig laufen.
+
+### 5. Falls Bewegungserkennung beim Start/Stop des Screensavers falsch auslöst
+- **Ignore Motion Detection when Screensaver goes on/off = EIN**
+
+Diese Option ist genau dafür gedacht, Fehltrigger beim Ein- oder Ausblenden des Screensavers zu vermeiden.
+
+## Kurzfassung
+Wenn du möchtest, dass **nur ein schwarzer Bildschirmschoner aktiv ist**, **Fully aber weiterläuft und per Kamera wieder aufwacht**, dann stelle Folgendes ein:
+
+- **Keep Screen On = EIN**
+- **Screensaver Timer = EIN**
+- **Screen Off Timer = AUS**
+- **Visual Motion Detection = EIN**
+- **Screensaver Brightness = sehr niedrig / schwarz**
+
+## Notiz
+Ursprünglich wurde der Chat als Rohprotokoll gespeichert und anschließend in dieses lesbare Markdown-Format umgewandelt.
